@@ -6,7 +6,8 @@ import configparser
 
 
 import classes
-from db import db
+if False:
+    from db import db
 import rp5_parser
 import processing
 import weather_csv
@@ -54,7 +55,7 @@ def get_weather_for_year(start_date: date, number: int, ws_id: int):
 
         download_link = rp5_parser.get_link_archive_file(answer.text)
 
-        with open(f'{STATIC_ROOT}{number}/{start_date.year}.csv', "wb") as file:
+        with open(f'{STATIC_ROOT}{number}/{start_date.year}.csv', "w") as file:
             response = current_session.get(download_link)
             while response.status_code != 200:
                 response = current_session.get(download_link)
@@ -96,7 +97,7 @@ def get_all_data():
             else:
                 print(f"Start getting data for {station.city} city with last "
                       f"date of loading {station.start_date.strftime('%Y.%m.%d')} ...")
-
+            print(station)
             create_directory(station)
             start_year: int = station.start_date.year
             if SAVE_IN_DB:

@@ -56,9 +56,6 @@ def get_missing_ws_info(current_session: Session, save_in_db: bool, station: cla
                 break
         station.latitude, station.longitude = \
             get_coordinates(str(soup.find("div", class_="pointNaviCont noprint").find("a")))
-        # if save_in_db:
-        #     if station.city_id is None:
-        #         station.city_id = queries.get_id_from_db()
     return station
 
 

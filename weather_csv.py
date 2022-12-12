@@ -43,7 +43,7 @@ def update_csv_file(static_root: str, delimiter, wanted_stations: [classes.Weath
     """ Function update file with our wanted weather stations.
         It write current date and id of weather station."""
 
-    with open(f"{static_root}cities.txt", "w", encoding="utf-8") as csv_file:
+    with open(f"{static_root}stations_info.txt", "w", encoding="utf-8") as csv_file:
         csv_data = ""
         for station in wanted_stations:
             csv_data = f"{csv_data}{station.to_csv(delimiter)}\n"
